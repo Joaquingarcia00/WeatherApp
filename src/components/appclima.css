@@ -1,0 +1,15 @@
+body{
+    background-color: lightsteelblue;
+    font-family: sans-serif;
+}
+th{
+    background-color: #0096c7;
+}
+td{
+    height:35px;
+    text-align:center;
+}
+#divtable{
+    width:80%;
+    margin: auto;
+}
