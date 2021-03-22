@@ -10,9 +10,12 @@ td{
     text-align:center;
 }
 #divtable{
-    width:80%;
+    width:85%;
     margin: auto;
 }
 li{
     line-height: 25px;
+}
+button{
+    margin-top:15px;
 }

@@ -1,40 +1,31 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect} from 'react';
 import { Switch,Route,Link,useParams } from 'react-router-dom'
   import './appclima.css' 
   const Ciudades = ()=> {
     const [ciudadesjson, setJson] = useState([]);
-    const [ciudadesjson2, setJson2] = useState([]);
     const getciudades = ()=>{
-    let chori='';
+
     fetch('https://raw.githubusercontent.com/michaelx/climate/master/climate.json')
         .then(response => response.json())
         .then(resp =>setJson( resp.sort(function (a, b) {
         return   a.country.localeCompare(b.country)
         })))
-        .then(resp => setJson2(resp) )
-    }
+    };
 
-    useEffect(()=> { getciudades()}, [])
+    useEffect(()=> { getciudades()}, []);
   
     return(
         <>
+  
+
         <ul>
         {
-
-
-
-        ciudadesjson.map( ciudad =>
-          <li key={ciudad.id}><Link class='linkcity'to={'/city/'+ciudad.id}>{ciudad.id} - {ciudad.city}, {ciudad.country}</Link></li>          
-        )
-        
-        
-        
-        
+        ciudadesjson.map( ciudad =><li key={ciudad.id}><Link class='linkcity'to={'/city/'+ciudad.id}>{ciudad.city}, {ciudad.country}</Link></li> )
         }
         </ul>
         </>
-    )
-  }
+    );
+  };
   
   const Ciudad =()=>{
     const [paramciudad, setCiudad] = useState([{"id": Number,"city": "","country": ""}])
