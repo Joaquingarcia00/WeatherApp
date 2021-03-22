@@ -13,3 +13,6 @@ td{
     width:80%;
     margin: auto;
 }
+li{
+    line-height: 25px;
+}
