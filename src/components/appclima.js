@@ -28,21 +28,8 @@ import { Switch,Route,Link,useParams } from 'react-router-dom'
   };
   
   const Ciudad =()=>{
-    const [paramciudad, setCiudad] = useState([{"id": Number,"city": "","country": ""}])
-    const [climi, setClimi]= useState([
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number},
-            {"high": Number,"low": Number,"dryDays": Number,"snowDays": Number,"rainfall": Number}
-    ])
+    const [paramciudad, setCiudad] = useState(null)
+    const [climi, setClimi]= useState(null)
     let params = useParams();
     function getciudad(){
         fetch('https://raw.githubusercontent.com/michaelx/climate/master/climate.json')
@@ -57,8 +44,9 @@ import { Switch,Route,Link,useParams } from 'react-router-dom'
 
     return(
         <>
-        <h2>{paramciudad.city}, {paramciudad.country}</h2>
-        
+       
+         {climi !== null?
+         <><h2>{paramciudad.city}, {paramciudad.country}</h2> 
         <p>Weather, monthly average</p>
         <hr/>
         <div id="divtable">
@@ -137,7 +125,7 @@ import { Switch,Route,Link,useParams } from 'react-router-dom'
             </tr>
           </tbody>
         </table> 
-        </div>
+        </div></> : null}
         <button><Link to="/">Get Back</Link></button>
         </>
     )
